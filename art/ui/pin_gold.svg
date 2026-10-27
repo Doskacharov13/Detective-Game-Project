@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+<defs>
+<radialGradient id="pinb" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffe8a0" stop-opacity="1"/><stop offset="1" stop-color="#c8962f" stop-opacity="1"/></radialGradient>
+
+</defs>
+<ellipse cx="40" cy="46" rx="22" ry="11" fill="#000" opacity="0.35"/><line x1="32" y1="36" x2="38" y2="58" stroke="#8a8f98" stroke-width="3" /><circle cx="32" cy="30" r="21" fill="url(#pinb)" stroke="#6a4a0c" stroke-width="2"/><circle cx="32" cy="30" r="12" fill="none" stroke="#6a4a0c" stroke-width="1.5" stroke-opacity="0.35"/><circle cx="24" cy="22" r="6" fill="#fff" opacity="0.6"/><circle cx="40" cy="38" r="4" fill="#000" opacity="0.12"/>
+</svg>

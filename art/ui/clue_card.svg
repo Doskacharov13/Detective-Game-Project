@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="224" viewBox="0 0 320 224">
+<defs>
+<linearGradient id="paper" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4e9c8" stop-opacity="1"/><stop offset="1" stop-color="#e2d3a8" stop-opacity="1"/></linearGradient>
+
+</defs>
+<rect x="14" y="18" width="300" height="200" fill="#000" opacity="0.34"/><path d="M8 8 L308 6 L310 206 L290 210 L270 204 L250 210 L230 205 L210 210 L8 206 Z" fill="url(#paper)" stroke="#b9a877" stroke-width="2"/><polygon points="308,176 310,206 282,206" fill="#c9b87d" opacity="0.0"/><rect x="104" y="0" width="100" height="26" fill="#e8d9a0" opacity="0.85" transform="rotate(-2 154 13)"/><rect x="104" y="0" width="100" height="4" fill="#fff" opacity="0.35" transform="rotate(-2 154 13)"/><rect x="24" y="156" width="234" height="2.6" fill="#b9a877" opacity="0.75"/><rect x="24" y="176" width="262" height="2.6" fill="#b9a877" opacity="0.75"/><rect x="24" y="196" width="203" height="2.6" fill="#b9a877" opacity="0.75"/><rect x="8" y="8" width="300" height="4" fill="#fff" opacity="0.35"/>
+</svg>
