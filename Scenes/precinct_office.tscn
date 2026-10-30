@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cv0ced1v7hym1"]
+
+[ext_resource type="Texture2D" uid="uid://cic6g6skhi5k" path="res://art/backgrounds/precinct_day.png" id="1_gqabu"]
+[ext_resource type="Script" uid="uid://q5hrwpkcr4ys" path="res://Scenes/precinct_office.gd" id="1_nhpjs"]
+[ext_resource type="PackedScene" uid="uid://bflbpn83grviq" path="res://Scripts/UI/inventory.tscn" id="2_ftusu"]
+[ext_resource type="Script" uid="uid://b2plj5cnmddsq" path="res://Scripts/Scenes/hotspot.gd" id="4_mkdwt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(270, 130)
+
+[node name="PrecinctOffice" type="Node2D" unique_id=1062665782]
+script = ExtResource("1_nhpjs")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=148510945]
+texture = ExtResource("1_gqabu")
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=369029916]
+
+[node name="Inventory" parent="UI" unique_id=1361950033 instance=ExtResource("2_ftusu")]
+position = Vector2(219, 877)
+scale = Vector2(0.4, 0.4)
+
+[node name="MessageLabel" type="Label" parent="UI" unique_id=1755365699]
+offset_left = 360.0
+offset_top = 30.0
+offset_right = 1560.0
+offset_bottom = 110.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 34
+text = "Precinct Office"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1449529606]
+
+[node name="CaseFile" type="Area2D" parent="Hotspots" unique_id=405661605]
+position = Vector2(698, 880)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Case File"
+message = "The case file Captain Calloway left on your desk."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/CaseFile" unique_id=416108666]
+shape = SubResource("RectangleShape2D_xrivr")

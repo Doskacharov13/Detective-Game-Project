@@ -1,0 +1,70 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/harbor_warehouse.gd" id="1_scene"]
+[ext_resource type="Texture2D" path="res://art/backgrounds/harbor_warehouse.svg" id="2_bg"]
+[ext_resource type="Script" path="res://Scripts/Scenes/hotspot.gd" id="3_hot"]
+[ext_resource type="PackedScene" path="res://Scripts/UI/inventory.tscn" id="4_inv"]
+
+[sub_resource type="RectangleShape2D" id="Shape_casing"]
+size = Vector2(120, 80)
+
+[sub_resource type="RectangleShape2D" id="Shape_photo"]
+size = Vector2(120, 90)
+
+[sub_resource type="RectangleShape2D" id="Shape_key"]
+size = Vector2(110, 50)
+
+[node name="HarborWarehouse" type="Node2D"]
+script = ExtResource("1_scene")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_bg")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="ShellCasing" type="Area2D" parent="Hotspots"]
+position = Vector2(930, 985)
+script = ExtResource("3_hot")
+hotspot_name = "Shell Casing"
+item_id = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/ShellCasing"]
+shape = SubResource("Shape_casing")
+
+[node name="WarehousePhotograph" type="Area2D" parent="Hotspots"]
+position = Vector2(1280, 915)
+script = ExtResource("3_hot")
+hotspot_name = "Warehouse Photograph"
+item_id = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/WarehousePhotograph"]
+shape = SubResource("Shape_photo")
+
+[node name="OldStorageKey" type="Area2D" parent="Hotspots"]
+position = Vector2(645, 790)
+script = ExtResource("3_hot")
+hotspot_name = "Old Storage Key"
+item_id = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/OldStorageKey"]
+shape = SubResource("Shape_key")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="UI" instance=ExtResource("4_inv")]
+position = Vector2(210, 877)
+scale = Vector2(0.4, 0.4)
+
+[node name="MessageLabel" type="Label" parent="UI"]
+offset_left = 360.0
+offset_top = 30.0
+offset_right = 1560.0
+offset_bottom = 110.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 34
+text = "Harbor Warehouse"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

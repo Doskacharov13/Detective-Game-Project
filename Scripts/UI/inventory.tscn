@@ -197,9 +197,5 @@ icon = ExtResource("6_e1w17")
 flat = true
 script = ExtResource("7_htm0a")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=785400333]
-position = Vector2(295, 364)
-zoom = Vector2(0.75, 0.75)
-
 [connection signal="pressed" from="InventoryContainer/LeftArrow" to="InventoryContainer" method="_on_left_arrow_pressed"]
 [connection signal="pressed" from="InventoryContainer/RightArrow" to="InventoryContainer" method="_on_right_arrow_pressed"]

@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Scenes/precinct_office.gd" id="1_scene"]
+[ext_resource type="Texture2D" path="res://art/backgrounds/precinct_day.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://art/blacklight/precinct_office_uv.svg" id="3_uv"]
+[ext_resource type="Script" path="res://Scripts/Scenes/hotspot.gd" id="4_hot"]
+[ext_resource type="PackedScene" path="res://Scripts/UI/inventory.tscn" id="5_inv"]
+[ext_resource type="Texture2D" path="res://art/ui/blacklight_flashlight.svg" id="6_flash"]
+
+[sub_resource type="RectangleShape2D" id="Shape_file"]
+size = Vector2(270, 130)
+
+[sub_resource type="RectangleShape2D" id="Shape_phone"]
+size = Vector2(150, 120)
+
+[sub_resource type="RectangleShape2D" id="Shape_door"]
+size = Vector2(170, 240)
+
+[sub_resource type="RectangleShape2D" id="Shape_mark"]
+size = Vector2(250, 110)
+
+[node name="PrecinctOffice" type="Node2D"]
+script = ExtResource("1_scene")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_bg")
+centered = false
+
+[node name="UVLayer" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_uv")
+centered = false
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="CaseFile" type="Area2D" parent="Hotspots"]
+position = Vector2(698, 880)
+script = ExtResource("4_hot")
+hotspot_name = "Case File"
+message = "The case file Captain Calloway left on your desk. Another man dead on a holiday."
+hide_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/CaseFile"]
+shape = SubResource("Shape_file")
+
+[node name="Phone" type="Area2D" parent="Hotspots"]
+position = Vector2(907, 800)
+script = ExtResource("4_hot")
+hotspot_name = "Phone"
+message = "The precinct phone. Nobody is calling at this hour."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Phone"]
+shape = SubResource("Shape_phone")
+
+[node name="Door" type="Area2D" parent="Hotspots"]
+position = Vector2(923, 545)
+script = ExtResource("4_hot")
+hotspot_name = "Door"
+message = "The way out to the harbor. We will make this door work in Step 5."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door"]
+shape = SubResource("Shape_door")
+
+[node name="HiddenMark" type="Area2D" parent="Hotspots"]
+position = Vector2(698, 880)
+script = ExtResource("4_hot")
+hotspot_name = "Hidden Mark"
+message = "Under the UV light: faint writing and a fingerprint on the case file. Someone handled it before you."
+only_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HiddenMark"]
+shape = SubResource("Shape_mark")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Inventory" parent="UI" instance=ExtResource("5_inv")]
+position = Vector2(210, 877)
+scale = Vector2(0.4, 0.4)
+
+[node name="BlacklightButton" type="TextureButton" parent="UI"]
+offset_left = 1750.0
+offset_top = 30.0
+offset_right = 1890.0
+offset_bottom = 170.0
+ignore_texture_size = true
+stretch_mode = 5
+texture_normal = ExtResource("6_flash")
+
+[node name="MessageLabel" type="Label" parent="UI"]
+offset_left = 360.0
+offset_top = 30.0
+offset_right = 1560.0
+offset_bottom = 110.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 34
+text = "Precinct Office"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Detective 2D Game"
+run/main_scene="uid://cv0ced1v7hym1"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,12 +21,20 @@ GameDb="*uid://ggpwndmfwkxs"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [dotnet]
 
 project/assembly_name="Detective 2D Game"
+
+[file_customization]
+
+folder_colors={
+"res://art/": "red"
+}
 
 [physics]
 
