@@ -3,16 +3,32 @@
 [ext_resource type="Texture2D" uid="uid://cic6g6skhi5k" path="res://art/backgrounds/precinct_day.png" id="1_gqabu"]
 [ext_resource type="Script" uid="uid://q5hrwpkcr4ys" path="res://Scenes/precinct_office.gd" id="1_nhpjs"]
 [ext_resource type="PackedScene" uid="uid://bflbpn83grviq" path="res://Scripts/UI/inventory.tscn" id="2_ftusu"]
+[ext_resource type="Texture2D" uid="uid://cwwmuq8ydgtjf" path="res://art/blacklight/precinct_office_uv.svg" id="3_o1h8s"]
 [ext_resource type="Script" uid="uid://b2plj5cnmddsq" path="res://Scripts/Scenes/hotspot.gd" id="4_mkdwt"]
+[ext_resource type="Texture2D" uid="uid://c1bpoy2brocg2" path="res://art/ui/blacklight_flashlight.svg" id="5_qrrfo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(270, 130)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oynns"]
+size = Vector2(250, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nhpjs"]
+size = Vector2(150, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkdwt"]
+size = Vector2(170, 240)
 
 [node name="PrecinctOffice" type="Node2D" unique_id=1062665782]
 script = ExtResource("1_nhpjs")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=148510945]
 texture = ExtResource("1_gqabu")
+centered = false
+
+[node name="UVLayer" type="Sprite2D" parent="." unique_id=450350708]
+visible = false
+texture = ExtResource("3_o1h8s")
 centered = false
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=369029916]
@@ -34,6 +50,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="BlacklightButton" type="TextureButton" parent="UI" unique_id=1489354336]
+offset_left = 1750.0
+offset_top = 30.0
+offset_right = 1890.0
+offset_bottom = 170.0
+texture_normal = ExtResource("5_qrrfo")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Hotspots" type="Node2D" parent="." unique_id=1449529606]
 
 [node name="CaseFile" type="Area2D" parent="Hotspots" unique_id=405661605]
@@ -41,6 +66,39 @@ position = Vector2(698, 880)
 script = ExtResource("4_mkdwt")
 hotspot_name = "Case File"
 message = "The case file Captain Calloway left on your desk."
+hide_in_blacklight = true
+show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/CaseFile" unique_id=416108666]
 shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="HiddenMark" type="Area2D" parent="Hotspots" unique_id=940177832]
+position = Vector2(698, 880)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Hidden Mark"
+message = "Under the UV light: faint writing and a fingerprint on the case file."
+only_in_blacklight = true
+show_outline = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HiddenMark" unique_id=1223449944]
+shape = SubResource("RectangleShape2D_oynns")
+
+[node name="Phone" type="Area2D" parent="Hotspots" unique_id=583872427]
+position = Vector2(907, 800)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Phone"
+message = "The precinct phone. Nobody is calling at this hour."
+show_outline = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Phone" unique_id=21731026]
+shape = SubResource("RectangleShape2D_nhpjs")
+
+[node name="Door" type="Area2D" parent="Hotspots" unique_id=569142712]
+position = Vector2(923, 545)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Door"
+message = "The way out to the harbor."
+show_outline = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door" unique_id=1505591749]
+shape = SubResource("RectangleShape2D_mkdwt")
