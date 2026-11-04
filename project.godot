@@ -33,7 +33,8 @@ project/assembly_name="Detective 2D Game"
 [file_customization]
 
 folder_colors={
-"res://art/": "red"
+"res://art/": "red",
+"res://art/blacklight/": "gray"
 }
 
 [physics]
