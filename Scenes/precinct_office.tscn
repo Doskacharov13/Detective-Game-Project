@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cwwmuq8ydgtjf" path="res://art/blacklight/precinct_office_uv.svg" id="3_o1h8s"]
 [ext_resource type="Script" uid="uid://b2plj5cnmddsq" path="res://Scripts/Scenes/hotspot.gd" id="4_mkdwt"]
 [ext_resource type="Texture2D" uid="uid://c1bpoy2brocg2" path="res://art/ui/blacklight_flashlight.svg" id="5_qrrfo"]
+[ext_resource type="Texture2D" uid="uid://dtpfycq4sash4" path="res://art/ui/evidence_board_button.svg" id="6_gc6g4"]
+[ext_resource type="Texture2D" uid="uid://cbiehdadgy5s3" path="res://art/items/shell_casing.svg" id="7_qrrfo"]
+[ext_resource type="PackedScene" uid="uid://bo3k35888aeyc" path="res://evidence_board.tscn" id="9_tt0lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(270, 130)
@@ -15,6 +18,9 @@ size = Vector2(250, 110)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhpjs"]
 size = Vector2(150, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gc6g4"]
+size = Vector2(110, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkdwt"]
 size = Vector2(170, 240)
@@ -59,6 +65,15 @@ texture_normal = ExtResource("5_qrrfo")
 ignore_texture_size = true
 stretch_mode = 5
 
+[node name="BoardButton" type="TextureButton" parent="UI" unique_id=9607677]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 160.0
+texture_normal = ExtResource("6_gc6g4")
+ignore_texture_size = true
+stretch_mode = 5
+
 [node name="Hotspots" type="Node2D" parent="." unique_id=1449529606]
 
 [node name="CaseFile" type="Area2D" parent="Hotspots" unique_id=405661605]
@@ -93,6 +108,21 @@ show_outline = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Phone" unique_id=21731026]
 shape = SubResource("RectangleShape2D_nhpjs")
 
+[node name="ShellCasing" type="Area2D" parent="Hotspots" unique_id=606281591]
+position = Vector2(1010, 880)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Shell Casing"
+item_id = 2
+pickup = true
+show_outline = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/ShellCasing" unique_id=368181361]
+shape = SubResource("RectangleShape2D_gc6g4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hotspots/ShellCasing" unique_id=1735773759]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_qrrfo")
+
 [node name="Door" type="Area2D" parent="Hotspots" unique_id=569142712]
 position = Vector2(923, 545)
 script = ExtResource("4_mkdwt")
@@ -102,3 +132,5 @@ show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door" unique_id=1505591749]
 shape = SubResource("RectangleShape2D_mkdwt")
+
+[node name="EvidenceBoard" parent="." unique_id=1608244228 instance=ExtResource("9_tt0lc")]

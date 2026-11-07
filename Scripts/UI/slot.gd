@@ -2,6 +2,8 @@ extends Panel
 
 @onready var item: TextureRect = $Item
 
+var item_id: int = 0   # the item's id in the database (0 = no id)
+
 var normal_style: StyleBox
 var active_style: StyleBoxTexture
 
@@ -17,11 +19,18 @@ func _ready():
 	active_style = StyleBoxTexture.new()
 	active_style.texture = preload("res://UI/Inventory/Inventory_Slot_Active.png")
 
-func pickFromSlot():
-	item.texture = null
+# ---------- Content of the slot ----------
 
-func putIntoSlot(new_texture):
+func is_empty() -> bool:
+	return item.texture == null
+
+func put_item(new_id: int, new_texture: Texture2D):
+	item_id = new_id
 	item.texture = new_texture
+
+func clear_item():
+	item_id = 0
+	item.texture = null
 
 # ---------- Active slot ----------
 
@@ -45,7 +54,7 @@ func set_highlight(on: bool):
 
 # Godot calls this when you press and drag on this slot
 func _get_drag_data(_at_position):
-	if item.texture == null:
+	if is_empty():
 		return null # empty slot, nothing to drag
 
 	# Small picture that follows the mouse while dragging
@@ -63,7 +72,7 @@ func _get_drag_data(_at_position):
 	# Fade the item in its original slot while dragging
 	item.modulate.a = 0.3
 
-	return {"from_slot": self, "texture": item.texture}
+	return {"from_slot": self, "item_id": item_id, "texture": item.texture}
 
 # Godot calls this on the slot under the mouse: can the item be dropped here?
 func _can_drop_data(_at_position, data):
@@ -76,9 +85,10 @@ func _drop_data(_at_position, data):
 		return
 
 	# Swap: if this slot is empty, the item simply moves here
+	var my_id = item_id
 	var my_texture = item.texture
-	putIntoSlot(data["texture"])
-	from_slot.putIntoSlot(my_texture)
+	put_item(data["item_id"], data["texture"])
+	from_slot.put_item(my_id, my_texture)
 
 	# The slot you dropped on becomes the active one
 	set_active()

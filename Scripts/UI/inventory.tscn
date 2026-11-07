@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://df3qcj5bsl44s" path="res://UI/Inventory/Inventory_Arrow.png" id="3_kexhi"]
 [ext_resource type="Texture2D" uid="uid://bhce2r82r5lcc" path="res://UI/Inventory/Inventory_Slot.png" id="4_e1w17"]
 [ext_resource type="Script" uid="uid://bhuo8rurai7fc" path="res://Scripts/UI/slot.gd" id="5_htm0a"]
-[ext_resource type="Texture2D" uid="uid://djn5bgdg6u0hm" path="res://UI/Inventory/OldStorageKey.png" id="5_ui16m"]
 [ext_resource type="Texture2D" uid="uid://cobktktgs8isn" path="res://UI/Inventory/BackPackClosed.png" id="6_e1w17"]
 [ext_resource type="Script" uid="uid://do7gwnf3tts3x" path="res://Scripts/UI/back_pack_button.gd" id="7_htm0a"]
 [ext_resource type="Texture2D" uid="uid://c1bpoy2brocg2" path="res://art/ui/blacklight_flashlight.svg" id="7_ss6y7"]
@@ -107,7 +106,6 @@ offset_left = 10.0
 offset_top = 14.0
 offset_right = 143.0
 offset_bottom = 138.0
-texture = ExtResource("5_ui16m")
 expand_mode = 1
 
 [node name="Slot2" type="Panel" parent="InventoryContainer/ScrollContainer/HBoxContainer" unique_id=825695157]

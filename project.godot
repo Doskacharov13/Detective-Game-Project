@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameDb="*uid://ggpwndmfwkxs"
+GameDB="*uid://ggpwndmfwkxs"
 
 [display]
 
@@ -29,6 +29,14 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Detective 2D Game"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-sqlite/plugin.cfg")
 
 [file_customization]
 

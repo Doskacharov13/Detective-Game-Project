@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bo3k35888aeyc"]
+
+[ext_resource type="Script" uid="uid://npwbwetdf5va" path="res://Scripts/Board/evidence_board.gd" id="1_bgm03"]
+
+[node name="EvidenceBoard" type="CanvasLayer" unique_id=1608244228]
+script = ExtResource("1_bgm03")

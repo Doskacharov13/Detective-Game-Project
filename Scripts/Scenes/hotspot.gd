@@ -1,12 +1,15 @@
 extends Area2D
+# A clickable spot in a scene. Put a CollisionShape2D (rectangle) inside it.
 
 signal clicked(hotspot)
 
 @export var hotspot_name: String = "Hotspot"
-@export_multiline var message: String = ""
-@export var only_in_blacklight: bool = false
-@export var hide_in_blacklight: bool = false
-@export var show_outline: bool = true
+@export_multiline var message: String = ""   # text shown when clicked
+@export var item_id: int = 0                 # the item's id in the database (0 = not an item)
+@export var pickup: bool = false             # true = clicking puts the item in the inventory
+@export var only_in_blacklight: bool = false # only exists while the blacklight is on
+@export var hide_in_blacklight: bool = false # only exists while the blacklight is off
+@export var show_outline: bool = true        # turn this off when the final art is in
 
 var hovering = false
 
@@ -18,6 +21,7 @@ func _ready():
 	if only_in_blacklight:
 		set_active(false)
 
+# Turns the hotspot on or off (invisible and not clickable when off)
 func set_active(on: bool):
 	visible = on
 	input_pickable = on
@@ -41,6 +45,7 @@ func _on_mouse_exited():
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	queue_redraw()
 
+# Draws a yellow box so you can see where the hotspot is
 func _draw():
 	if not show_outline:
 		return
@@ -49,3 +54,7 @@ func _draw():
 	var alpha = 0.45 if hovering else 0.18
 	draw_rect(rect, Color(1, 0.9, 0.4, alpha), true)
 	draw_rect(rect, Color(1, 0.9, 0.4, 0.9), false, 2.0)
+
+# Stops the hand cursor from getting stuck when the hotspot is removed
+func _exit_tree():
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
