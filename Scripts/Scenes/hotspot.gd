@@ -4,12 +4,14 @@ extends Area2D
 signal clicked(hotspot)
 
 @export var hotspot_name: String = "Hotspot"
-@export_multiline var message: String = ""   # text shown when clicked
+@export_multiline var message: String = ""   # text shown when clicked (empty = automatic text)
 @export var item_id: int = 0                 # the item's id in the database (0 = not an item)
 @export var pickup: bool = false             # true = clicking puts the item in the inventory
+@export var clue_id: int = 0                 # a clue card this spot gives (0 = none)
+@export var linked_node: NodePath            # a picture that disappears when the item is picked up
 @export var only_in_blacklight: bool = false # only exists while the blacklight is on
 @export var hide_in_blacklight: bool = false # only exists while the blacklight is off
-@export var show_outline: bool = true        # turn this off when the final art is in
+@export var show_outline: bool = false       # turn this ON if you want to see the yellow boxes
 
 var hovering = false
 

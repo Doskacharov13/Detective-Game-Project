@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://byf6ja0rprswu"]
+
+[ext_resource type="Script" uid="uid://bjj2ve0loqg7l" path="res://Scripts/Scenes/harbor_warehouse.gd" id="1_bp76f"]
+[ext_resource type="Texture2D" uid="uid://j1dsktnbregd" path="res://art/backgrounds/warehouse_light.png" id="2_tgrjc"]
+[ext_resource type="Texture2D" uid="uid://bnncpohxq7afw" path="res://art/blacklight/warehouse_uv_trail.png" id="3_c4agu"]
+[ext_resource type="Texture2D" uid="uid://blbirlrnjgcrn" path="res://art/blacklight/warehouse_uv_markers.png" id="4_hulql"]
+[ext_resource type="PackedScene" uid="uid://bflbpn83grviq" path="res://Scripts/UI/inventory.tscn" id="4_tgrjc"]
+[ext_resource type="Texture2D" uid="uid://c1bpoy2brocg2" path="res://art/ui/blacklight_flashlight.svg" id="5_c4agu"]
+[ext_resource type="Texture2D" uid="uid://cin42ac45umds" path="res://art/blacklight/warehouse_uv_casings.png" id="5_n4sba"]
+[ext_resource type="Texture2D" uid="uid://dtpfycq4sash4" path="res://art/ui/evidence_board_button.svg" id="6_hulql"]
+[ext_resource type="Texture2D" uid="uid://bshnin0kduu06" path="res://art/blacklight/warehouse_uv_key.png" id="6_xdg48"]
+[ext_resource type="Script" uid="uid://b2plj5cnmddsq" path="res://Scripts/Scenes/hotspot.gd" id="7_n4sba"]
+[ext_resource type="PackedScene" uid="uid://bo3k35888aeyc" path="res://evidence_board.tscn" id="9_q0duk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(70, 110)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp76f"]
+size = Vector2(100, 140)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgrjc"]
+size = Vector2(90, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4agu"]
+size = Vector2(460, 200)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hulql"]
+size = Vector2(370, 220)
+
+[node name="HarborWarehouse" type="Node2D" unique_id=1062665782]
+script = ExtResource("1_bp76f")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=148510945]
+texture = ExtResource("2_tgrjc")
+centered = false
+
+[node name="UVLayers" type="Node2D" parent="." unique_id=560384550]
+visible = false
+
+[node name="Trail" type="Sprite2D" parent="UVLayers" unique_id=86966719]
+texture = ExtResource("3_c4agu")
+centered = false
+
+[node name="Markers" type="Sprite2D" parent="UVLayers" unique_id=48094403]
+texture = ExtResource("4_hulql")
+centered = false
+
+[node name="Casings" type="Sprite2D" parent="UVLayers" unique_id=425678245]
+texture = ExtResource("5_n4sba")
+centered = false
+
+[node name="Key" type="Sprite2D" parent="UVLayers" unique_id=217113197]
+texture = ExtResource("6_xdg48")
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=369029916]
+
+[node name="Inventory" parent="UI" unique_id=1361950033 instance=ExtResource("4_tgrjc")]
+position = Vector2(219, 877)
+scale = Vector2(0.4, 0.4)
+
+[node name="MessageLabel" type="Label" parent="UI" unique_id=1755365699]
+offset_left = 360.0
+offset_top = 30.0
+offset_right = 1560.0
+offset_bottom = 110.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 34
+text = "Precinct Office"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="BlacklightButton" type="TextureButton" parent="UI" unique_id=1489354336]
+offset_left = 1750.0
+offset_top = 30.0
+offset_right = 1890.0
+offset_bottom = 170.0
+texture_normal = ExtResource("5_c4agu")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="BoardButton" type="TextureButton" parent="UI" unique_id=9607677]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 160.0
+offset_bottom = 160.0
+texture_normal = ExtResource("6_hulql")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Hotspots" type="Node2D" parent="." unique_id=1449529606]
+
+[node name="Exit" type="Area2D" parent="Hotspots" unique_id=750814434]
+position = Vector2(50, 575)
+script = ExtResource("7_n4sba")
+hotspot_name = "Exit"
+message = "The exit back to the precinct."
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Exit" unique_id=1752386247]
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="Photograph" type="Area2D" parent="Hotspots" unique_id=1026978313]
+position = Vector2(978, 740)
+script = ExtResource("7_n4sba")
+hotspot_name = "Warehouse Photograph"
+item_id = 3
+pickup = true
+only_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Photograph" unique_id=1518882922]
+shape = SubResource("RectangleShape2D_bp76f")
+
+[node name="Key" type="Area2D" parent="Hotspots" unique_id=860659545]
+position = Vector2(618, 860)
+script = ExtResource("7_n4sba")
+hotspot_name = "Old Storage Key"
+item_id = 1
+pickup = true
+linked_node = NodePath("../../UVLayers/Key")
+only_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Key" unique_id=1508946729]
+shape = SubResource("RectangleShape2D_tgrjc")
+
+[node name="Casings" type="Area2D" parent="Hotspots" unique_id=143050878]
+position = Vector2(1170, 900)
+script = ExtResource("7_n4sba")
+hotspot_name = "Shell Casing"
+item_id = 2
+pickup = true
+linked_node = NodePath("../../UVLayers/Casings")
+only_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Casings" unique_id=1549399233]
+shape = SubResource("RectangleShape2D_c4agu")
+
+[node name="Trail" type="Area2D" parent="Hotspots" unique_id=794354512]
+position = Vector2(805, 806)
+script = ExtResource("7_n4sba")
+hotspot_name = "Chemical Trail"
+message = "Under the UV light: a glowing chemical trail. A new card is on the evidence board."
+clue_id = 4
+only_in_blacklight = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Trail" unique_id=1751090306]
+shape = SubResource("RectangleShape2D_hulql")
+
+[node name="EvidenceBoard" parent="." unique_id=1608244228 instance=ExtResource("9_q0duk")]
