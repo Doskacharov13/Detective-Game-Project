@@ -97,6 +97,7 @@ position = Vector2(50, 575)
 script = ExtResource("7_n4sba")
 hotspot_name = "Exit"
 message = "The exit back to the precinct."
+go_to_scene = "uid://cv0ced1v7hym1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Exit" unique_id=1752386247]
 shape = SubResource("RectangleShape2D_13qdw")

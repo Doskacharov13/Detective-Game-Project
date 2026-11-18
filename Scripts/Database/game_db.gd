@@ -67,6 +67,7 @@ func get_deduction_clue_ids(deduction_id: int) -> Array:
 func start_new_game() -> void:
 	db.query_with_bindings("DELETE FROM save_clues WHERE save_id = ?;", [current_save_id])
 	db.query_with_bindings("DELETE FROM save_deductions WHERE save_id = ?;", [current_save_id])
+	db.query_with_bindings("UPDATE save_inventory SET item_id = NULL WHERE save_id = ?;", [current_save_id])
 
 func get_inventory(save_id: int) -> Array:
 	db.query_with_bindings(
@@ -96,6 +97,13 @@ func add_clue_for_item(save_id: int, item_id: int) -> void:
 func has_clue(save_id: int, clue_id: int) -> bool:
 	db.query_with_bindings(
 		"SELECT 1 FROM save_clues WHERE save_id = ? AND clue_id = ?;", [save_id, clue_id])
+	return not db.query_result.is_empty()
+	
+	# True if the player already picked up this item (so it does not come back when a scene is loaded again)
+func has_picked_up(save_id: int, item_id: int) -> bool:
+	db.query_with_bindings(
+		"SELECT 1 FROM save_clues sc JOIN clues c ON c.clue_id = sc.clue_id " +
+		"WHERE sc.save_id = ? AND c.item_id = ?;", [save_id, item_id])
 	return not db.query_result.is_empty()
 
 # The clues the player has found (name, description ...)

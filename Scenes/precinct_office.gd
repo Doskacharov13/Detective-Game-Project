@@ -15,6 +15,7 @@ const BLACKLIGHT_VIEW = preload("res://art/backgrounds/precinct_night_no_lamps.p
 var blacklight_on = false
 
 func _ready():
+	_remove_collected_items()
 	for hotspot in $Hotspots.get_children():
 		hotspot.clicked.connect(_on_hotspot_clicked)
 	blacklight_button.pressed.connect(_on_blacklight_pressed)
@@ -37,6 +38,11 @@ func _update_blacklight():
 			hotspot.set_active(not blacklight_on)
 
 func _on_hotspot_clicked(hotspot):
+	# A door or exit: change to another scene
+	if hotspot.go_to_scene != "":
+		get_tree().change_scene_to_file.call_deferred(hotspot.go_to_scene)
+		return
+	
 	# Hotspots that hold an item: put it in the inventory
 	if hotspot.pickup and hotspot.item_id > 0:
 		_pick_up(hotspot)
@@ -53,3 +59,13 @@ func _pick_up(hotspot):
 		hotspot.queue_free()   # the hotspot (and its picture) disappears from the scene
 	else:
 		message_label.text = "Your inventory is full."
+		
+		# Items the player already picked up must not come back when the scene is loaded again
+func _remove_collected_items():
+	for hotspot in $Hotspots.get_children():
+		if hotspot.pickup and hotspot.item_id > 0 and GameDB.has_picked_up(GameDB.current_save_id, hotspot.item_id):
+			if not hotspot.linked_node.is_empty():
+				var picture = hotspot.get_node_or_null(hotspot.linked_node)
+				if picture:
+					picture.queue_free()
+			hotspot.queue_free()

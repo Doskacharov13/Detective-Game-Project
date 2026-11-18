@@ -82,7 +82,6 @@ script = ExtResource("4_mkdwt")
 hotspot_name = "Case File"
 message = "The case file Captain Calloway left on your desk."
 hide_in_blacklight = true
-show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/CaseFile" unique_id=416108666]
 shape = SubResource("RectangleShape2D_xrivr")
@@ -93,7 +92,6 @@ script = ExtResource("4_mkdwt")
 hotspot_name = "Hidden Mark"
 message = "Under the UV light: faint writing and a fingerprint on the case file."
 only_in_blacklight = true
-show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/HiddenMark" unique_id=1223449944]
 shape = SubResource("RectangleShape2D_oynns")
@@ -103,7 +101,6 @@ position = Vector2(907, 800)
 script = ExtResource("4_mkdwt")
 hotspot_name = "Phone"
 message = "The precinct phone. Nobody is calling at this hour."
-show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Phone" unique_id=21731026]
 shape = SubResource("RectangleShape2D_nhpjs")
@@ -114,7 +111,6 @@ script = ExtResource("4_mkdwt")
 hotspot_name = "Shell Casing"
 item_id = 2
 pickup = true
-show_outline = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/ShellCasing" unique_id=368181361]
 shape = SubResource("RectangleShape2D_gc6g4")
@@ -128,7 +124,7 @@ position = Vector2(923, 545)
 script = ExtResource("4_mkdwt")
 hotspot_name = "Door"
 message = "The way out to the harbor."
-show_outline = false
+go_to_scene = "uid://byf6ja0rprswu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door" unique_id=1505591749]
 shape = SubResource("RectangleShape2D_mkdwt")

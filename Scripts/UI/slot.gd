@@ -1,5 +1,5 @@
 extends Panel
-
+signal changed   # sent when the item in this slot changes
 @onready var item: TextureRect = $Item
 
 var item_id: int = 0   # the item's id in the database (0 = no id)
@@ -27,10 +27,12 @@ func is_empty() -> bool:
 func put_item(new_id: int, new_texture: Texture2D):
 	item_id = new_id
 	item.texture = new_texture
+	changed.emit()
 
 func clear_item():
 	item_id = 0
 	item.texture = null
+	changed.emit()
 
 # ---------- Active slot ----------
 
