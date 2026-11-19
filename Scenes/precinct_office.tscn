@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://c1bpoy2brocg2" path="res://art/ui/blacklight_flashlight.svg" id="5_qrrfo"]
 [ext_resource type="Texture2D" uid="uid://dtpfycq4sash4" path="res://art/ui/evidence_board_button.svg" id="6_gc6g4"]
 [ext_resource type="Texture2D" uid="uid://cbiehdadgy5s3" path="res://art/items/shell_casing.svg" id="7_qrrfo"]
-[ext_resource type="PackedScene" uid="uid://bo3k35888aeyc" path="res://evidence_board.tscn" id="9_tt0lc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(270, 130)
@@ -128,5 +127,3 @@ go_to_scene = "uid://byf6ja0rprswu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Door" unique_id=1505591749]
 shape = SubResource("RectangleShape2D_mkdwt")
-
-[node name="EvidenceBoard" parent="." unique_id=1608244228 instance=ExtResource("9_tt0lc")]

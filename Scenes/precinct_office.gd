@@ -9,7 +9,7 @@ const BLACKLIGHT_VIEW = preload("res://art/backgrounds/precinct_night_no_lamps.p
 @onready var message_label: Label = $UI/MessageLabel
 @onready var blacklight_button: TextureButton = $UI/BlacklightButton
 @onready var board_button: TextureButton = $UI/BoardButton
-@onready var board = $EvidenceBoard
+
 @onready var inventory = $UI/Inventory/InventoryContainer
 
 var blacklight_on = false
@@ -19,7 +19,7 @@ func _ready():
 	for hotspot in $Hotspots.get_children():
 		hotspot.clicked.connect(_on_hotspot_clicked)
 	blacklight_button.pressed.connect(_on_blacklight_pressed)
-	board_button.pressed.connect(board.open)
+	board_button.pressed.connect(EvidenceBoard.open)
 	_update_blacklight()
 	message_label.text = "Precinct Office. Your desk."
 
