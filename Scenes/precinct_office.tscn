@@ -18,6 +18,9 @@ size = Vector2(250, 110)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nhpjs"]
 size = Vector2(150, 120)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tt0lc"]
+size = Vector2(180, 300)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gc6g4"]
 size = Vector2(110, 80)
 
@@ -103,6 +106,15 @@ message = "The precinct phone. Nobody is calling at this hour."
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Phone" unique_id=21731026]
 shape = SubResource("RectangleShape2D_nhpjs")
+
+[node name="Calloway" type="Area2D" parent="Hotspots" unique_id=125766701]
+position = Vector2(514, 560)
+script = ExtResource("4_mkdwt")
+hotspot_name = "Captain Calloway"
+character_id = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Calloway" unique_id=127069880]
+shape = SubResource("RectangleShape2D_tt0lc")
 
 [node name="ShellCasing" type="Area2D" parent="Hotspots" unique_id=606281591]
 position = Vector2(1010, 880)

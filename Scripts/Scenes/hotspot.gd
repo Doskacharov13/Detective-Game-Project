@@ -9,6 +9,7 @@ signal clicked(hotspot)
 @export var pickup: bool = false             # true = clicking puts the item in the inventory
 @export var clue_id: int = 0                 # a clue card this spot gives (0 = none)
 @export var linked_node: NodePath            # a picture that disappears when the item is picked up
+@export var character_id: int = 0            # a person: clicking starts a conversation with them
 @export_file("*.tscn") var go_to_scene: String = ""   # clicking changes to this scene (empty = stay)
 @export var only_in_blacklight: bool = false # only exists while the blacklight is on
 @export var hide_in_blacklight: bool = false # only exists while the blacklight is off

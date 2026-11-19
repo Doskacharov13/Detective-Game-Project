@@ -42,6 +42,12 @@ func get_item(item_id: int) -> Dictionary:
 		return {}
 	return db.query_result[0]
 
+func get_character(character_id: int) -> Dictionary:
+	db.query_with_bindings("SELECT * FROM characters WHERE character_id = ?;", [character_id])
+	if db.query_result.is_empty():
+		return {}
+	return db.query_result[0]
+
 func get_dialogue(character_id: int, scene_id: int) -> Array:
 	db.query_with_bindings(
 		"SELECT * FROM dialogue WHERE character_id = ? AND scene_id = ? ORDER BY line_order;",

@@ -15,9 +15,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
 size = Vector2(70, 110)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp76f"]
-size = Vector2(100, 140)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgrjc"]
 size = Vector2(90, 160)
 
@@ -101,17 +98,6 @@ go_to_scene = "uid://cv0ced1v7hym1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Exit" unique_id=1752386247]
 shape = SubResource("RectangleShape2D_13qdw")
-
-[node name="Photograph" type="Area2D" parent="Hotspots" unique_id=1026978313]
-position = Vector2(978, 740)
-script = ExtResource("7_n4sba")
-hotspot_name = "Warehouse Photograph"
-item_id = 3
-pickup = true
-only_in_blacklight = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hotspots/Photograph" unique_id=1518882922]
-shape = SubResource("RectangleShape2D_bp76f")
 
 [node name="Key" type="Area2D" parent="Hotspots" unique_id=860659545]
 position = Vector2(618, 860)

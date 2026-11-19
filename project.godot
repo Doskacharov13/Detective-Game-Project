@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameDB="*uid://ggpwndmfwkxs"
 EvidenceBoard="*uid://bo3k35888aeyc"
+DialogueBox="*uid://cfgmqxm3o6b7w"
 
 [display]
 
